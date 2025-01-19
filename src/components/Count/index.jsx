@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./style.scss";
 
 const Count = ({ count, increase, id }) => {
@@ -10,6 +11,7 @@ const Count = ({ count, increase, id }) => {
           min="1"
           max="100"
           value={count}
+          readOnly // Добавлено, чтобы сделать input только для чтения
         />
       </div>
       <div className="count__controls">
@@ -28,6 +30,12 @@ const Count = ({ count, increase, id }) => {
       </div>
     </div>
   );
+};
+
+Count.propTypes = {
+  count: PropTypes.number.isRequired, // Ожидаем, что count — это обязательное число
+  increase: PropTypes.func.isRequired, // increase — обязательная функция
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired, // id может быть строкой или числом
 };
 
 export default Count;

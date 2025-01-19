@@ -1,4 +1,5 @@
 import ButtonDelete from "../ButtonDelete";
+import PropTypes from "prop-types";
 import Count from "../Count";
 import "./style.scss";
 
@@ -19,6 +20,18 @@ const Product = ({ product, deleteProduct, increase }) => {
       </div>
     </section>
   );
+};
+
+Product.propTypes = {
+  product: PropTypes.shape({
+    img: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    priceTotal: PropTypes.number.isRequired,
+    count: PropTypes.number.isRequired,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  }).isRequired,
+  deleteProduct: PropTypes.func.isRequired,
+  increase: PropTypes.func.isRequired,
 };
 
 export default Product;
