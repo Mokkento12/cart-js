@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import "./style.scss";
 
-const Count = ({ count, increase, id }) => {
+const Count = ({ count, increase, decrease, id }) => {
   return (
     <div className="count">
       <div className="count__box">
@@ -24,7 +24,13 @@ const Count = ({ count, increase, id }) => {
         >
           <img src="./img/icons/icon-up.svg" alt="Increase" />
         </button>
-        <button type="button" className="count__down">
+        <button
+          type="button"
+          className="count__down"
+          onClick={() => {
+            decrease(id);
+          }}
+        >
           <img src="./img/icons/icon-down.svg" alt="Decrease" />
         </button>
       </div>
@@ -35,6 +41,7 @@ const Count = ({ count, increase, id }) => {
 Count.propTypes = {
   count: PropTypes.number.isRequired, // Ожидаем, что count — это обязательное число
   increase: PropTypes.func.isRequired, // increase — обязательная функция
+  decrease: PropTypes.func.isRequired, // decrease — обязательная функция
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired, // id может быть строкой или числом
 };
 
