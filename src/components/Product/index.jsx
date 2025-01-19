@@ -2,7 +2,7 @@ import ButtonDelete from "../ButtonDelete";
 // import Count from "../Count";
 import "./style.scss";
 
-const Product = ({ product }) => {
+const Product = ({ product, deleteProduct }) => {
   const { img, title, price, count, id } = product;
   return (
     <section className="product">
@@ -13,7 +13,7 @@ const Product = ({ product }) => {
       <div className="product__count">{/* <Count /> */}</div>
       <div className="product__price">{price}</div>
       <div className="product__controls">
-        <ButtonDelete />
+        <ButtonDelete deleteProduct={deleteProduct} id={id} />
       </div>
     </section>
   );
